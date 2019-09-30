@@ -1,0 +1,17 @@
+{
+  "name": "island-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.8.2",
+    "koa-router": "^7.4.0",
+    "require-directory": "^2.1.1"
+  }
+}
