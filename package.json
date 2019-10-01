@@ -10,9 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.8.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
-    "require-directory": "^2.1.1"
+    "lodash": "^4.17.15",
+    "mysql2": "^1.7.0",
+    "require-directory": "^2.1.1",
+    "sequelize": "^5.19.1",
+    "validator": "^11.1.0"
   }
 }

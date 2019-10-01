@@ -14,7 +14,7 @@ const catchError = async (ctx, next) => {
       ctx.status = error.status;
     } else { // 处理未知错误
       ctx.body = {
-        msg: '未知错误',
+        msg: error.message,
         errorCode: 999,
         requestUrl: `${ctx.method} ${ctx.path}` 
       }
