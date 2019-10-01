@@ -1,5 +1,36 @@
 /**
  * Lin-Validator v2
+ * 
+ * 
+ * 用法：同文件加下, 必须有 http-exception 全局 Eroor封装库, 依赖 lodash, validator, jsonwebtoken库
+ * 
+ * 添加校验规则 
+ * const {LinValidator, Rule} = require('../../core/lin-validator-v2');
+
+    class PositiveIntegerValidator extends LinValidator {
+        constructor() {
+            super();
+            this.page = [  // 校验规则按数组方式依次添加
+                new Rule('isInt', 'page必须为整数'),
+                new Rule('matches', 'error_message', /正则/),
+                ...
+            ]
+        }
+        // 自定义校验
+        validatePassword(vals) {   // 自定义校验必须以validate开头,
+            let {pass1, pass2} = vals.body;
+            if (pass1 !== pass2) {
+                 throw new Error('两次输入的密码不一致');
+            }
+         }
+    }
+    module.exports = { PositiveIntegerValidator };  // 导出
+
+    使用： async (ctx, next) => { // 必须强制使用 async-await
+                    let v = await new PositiveIntegerValidator().validate(ctx);
+                    console.log(v.get('path.page'), v.get('query.name'));   path.xx获取 路径参数（: 冒号传参）, query.xx获取问号传参, body.xx获取 post表单、json数据
+                }
+    
  */
 
 const validator = require('validator')

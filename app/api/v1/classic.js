@@ -1,5 +1,6 @@
 const Router = require('koa-router');
-const {PositiveIntegerValidator} = require('../../validators/validator.js');
+const {ParameterException} = require('../../../core/http-exception');
+const {isInt} = require('validator');
 
 const router = new Router();
 
@@ -9,8 +10,11 @@ router.get('/classic', async (ctx, next) => {
 });
 
 router.post('/classic/:type', async (ctx, next) => {
-  const v = await new PositiveIntegerValidator().validate(ctx);
-  console.log(v.get('ctx.params'));
+  if (!isInt(ctx.params.type)) {
+    ctx.body = new ParameterException();
+  } else {
+    ctx.body = 'success';
+  }
   await next();
 });
 

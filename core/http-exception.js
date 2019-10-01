@@ -1,33 +1,33 @@
-// 封装自定义已知error库
 
-/**
- * @class HttpException
- * @extends {Error}
- * 
- * @param {string} msg
- * @param {number} errorCode
- * @param {number} status
- */
 class HttpException extends Error {
-  constructor(msg = '服务器错误', errorCode = 10000, status = 400) {
-    super(msg);
-    this.msg = msg;
-    this.errorCode = errorCode;
-    this.status = status;
-  }
+    constructor(msg = '服务器异常', errorCode = 10000, code = 400) {
+        super()
+        this.errorCode = errorCode
+        this.code = code
+        this.msg = msg
+    }
 }
 
-// 参数错误 类
 class ParameterException extends HttpException {
-  constructor(msg, errorCode) {
-    super();
-    this.msg = msg || '参数错误';
-    this.errorCode = errorCode || 10000;
-    this.status = 400;
-  }
+    constructor(msg, errorCode) {
+        super()
+        this.code = 400
+        this.msg = msg || '参数类型错误'
+        this.errorCode = errorCode || 10000
+    }
+}
+
+class Success extends HttpException {
+    constructor(msg, errorCode) {
+        super(); 
+        this.code = 201;
+        this.msg = msg || 'ok';
+        this.errorCode = errorCode || 0;
+    }
 }
 
 module.exports = {
-  HttpException,
-  ParameterException
-};
+    HttpException,
+    ParameterException,
+    Success
+}
