@@ -33,7 +33,7 @@ class RegisterFormValidator extends LinValidator {
     ]
   }
 
-  async validateNickname(vals) {
+  async validateNickname(vals) {  // 自定义校验必须以validate开头,
     const {nickname} = vals.body 
     const user = await User.findOne({
       where: {
@@ -57,7 +57,7 @@ class RegisterFormValidator extends LinValidator {
     }
   }
 
-  validatePassword(vals) {   // 自定义校验必须以validate开头,
+  validatePassword(vals) {   
     let {pass1, pass2} = vals.body;
     if (pass1 !== pass2) {
       throw new Error('两次输入的密码不一致');

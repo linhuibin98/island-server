@@ -23,7 +23,8 @@
 .cache  
 .project  
 .settings  
-.tmproj  
+.tmproj
+.vscode  
 *.esproj  
 *.sublime-project  
 *.sublime-workspace  
