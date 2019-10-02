@@ -13,6 +13,7 @@ const catchError = async (ctx, next) => {
         requestUrl: `${ctx.method} ${ctx.path}`
       };
     } else { // 处理未知错误
+      console.log(error);
       ctx.status = 500;
       ctx.body = {
         msg: error.message,
